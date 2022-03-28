@@ -83,8 +83,8 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Angel Vega** - *Trabajo Inicial* - [AngelVega](https://github.com/AngelVega26/clasesBDDd)
-* **paolalara17** - *Documentación* - [Paola Lara]([#fulanito-de-tal](https://github.com/paolalara17))
+* **Angel Vega** - *Trabajo Inicial* - [AngelVega](https://github.com/AngelVega26/clasesBDD)
+* **ThunderGer** - *Documentación* - [Luis Gerardo]([#fulanito-de-tal](https://github.com/ThunderGer23))
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
