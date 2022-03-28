@@ -24,14 +24,11 @@ def create_users(user: User):
 def find_user(id: str):
     return userEntity(conn.local.user.find_one({"_id": ObjectId(id)}))
 
-@user.post('/users/')
-def create_user():
-    return {"Holis"}
 
-@user.put('/users/')
+@user.put('/users/{id}')
 def update_user():
     return {"Holis"}
 
-@user.delete('/users/')
+@user.delete('/users/{id}')
 def delete_user():
     return {"Holis"}
