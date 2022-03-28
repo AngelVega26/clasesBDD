@@ -1,27 +1,10 @@
-<<<<<<< HEAD
 from fastapi import APIRouter,Response, status
-=======
-from hashlib import new
-from fastapi import APIRouter, Response, status
->>>>>>> origin/ThunderGer
 from config.db import conn
 from schemas.user import userEntity, usersEntity
 from models.user import User
 from passlib.hash import sha256_crypt
 from bson import ObjectId
 from starlette.status import HTTP_204_NO_CONTENT
-<<<<<<< HEAD
-
-
-user = APIRouter()
-
-@user.get('/users/',response_model = list[User],tags = ['Users'])
-def get_users():
-    return userEntity(conn.local.user.find())
-
-@user.post('/user/',response_model = list[User],tags = ['Users'])
-def create_user(user:User):
-=======
 
 user = APIRouter()
 
@@ -31,28 +14,11 @@ def get_users():
 
 @user.post('/user', response_model= list[User], tags = ['Users'])
 def create_user(user: User):
->>>>>>> origin/ThunderGer
     new_user = dict(user)
     new_user['password'] = sha256_crypt.encrypt(new_user['password'])
     del new_user['id']
     id = conn.local.user.insert_one(new_user).inserted_id
     user = conn.local.user.find_one({"_id" : id})
-<<<<<<< HEAD
-
-    return userEntity(user)
-
-@user.get('/user/{id}', response_model = User, tags = ['Users'])
-def find_user(id : str):
-    return userEntity(conn.local.user.find_one({"_id" : ObjectId(id)}))
-
-@user.put('/users/{id}')
-def update_user():
-    return {"Holis"}
-
-@user.delete('/users/{id}')
-def delete_user():
-    return {"Holis"}
-=======
     return userEntity(user)
 
 @user.get('/user/{id}', response_model=User, tags = ['Users'])
@@ -70,4 +36,3 @@ def update_user(id: str, user: User):
 def delete_user(id: str):
     userEntity(conn.local.user.find_one_and_delete({"_id": ObjectId(id)}))
     return Response(status_code=HTTP_204_NO_CONTENT)
->>>>>>> origin/ThunderGer
