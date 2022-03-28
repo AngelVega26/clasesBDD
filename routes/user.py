@@ -25,10 +25,14 @@ def find_user(id: str):
     return userEntity(conn.local.user.find_one({"_id": ObjectId(id)}))
 
 
-@user.put('/users/{id}')
-def update_user():
-    return {"Holis"}
+@user.put('/users/{id}', response_model=User, tags=['Users'])
+def update_user(id: str, user: User):
+    new_user = dict(user)
+    new_user['password'] = sha256_crypt.encrypt(new_user['password'])
+    conn.local.user.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(new_user)})
+    return userEntity (conn.local.user.find_one({"_id": ObjectId(id)}))
 
-@user.delete('/users/{id}')
-def delete_user():
-    return {"Holis"}
+@user.delete('/users/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=['Users'])
+def delete_user(id: str):
+    userEntity(conn.local.user.find_one_and_delete({"_id": ObjectId(id)}))
+    return Response(satus_code=HTTP_204_NO_CONTENT)
