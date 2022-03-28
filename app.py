@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 from routes.user import user
-
-app = FastAPI()
+from docs import tags_metadata
+app = FastAPI(
+    title = "Api para BDD con Mongo",
+    description = "Esta api es para practica de la materia BDD",
+    version = "1.5",
+    openapi_tags = tags_metadata
+)
 
 @app.get('/')
 def get_raiz():
